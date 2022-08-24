@@ -32,7 +32,8 @@ class Score(Turtle):
             score1 = f.readline().split()
             if len(score1) > 0:
                 if self.score > int(score1[-1]):
-                    f.truncate(0)
+                    f.seek(0)
+                    f.truncate()
                     f.write(f"Highest scorer : {user_name} : {self.score}")
                 else:
                     pass

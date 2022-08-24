@@ -1,3 +1,4 @@
+from asyncio.proactor_events import _ProactorBasePipeTransport
 from turtle import Turtle, Screen
 import time
 
@@ -14,14 +15,21 @@ class Snake:
     def __init__(self):
         self.segment = []
         self.create_snake()
+        self.head = self.segment[0]
 
     def create_snake(self):
         for position in STARTING_POSITION:
-            turtle = Turtle(shape='square')
-            turtle.penup()
-            turtle.color('white')
-            turtle.goto(position)
-            self.segment.append(turtle)
+            self.add_segment(position)
+               
+    def add_segment(self, position):
+        turtle = Turtle(shape='square')
+        turtle.penup()
+        turtle.color('yellow')
+        turtle.goto(position)
+        self.segment.append(turtle)
+
+    def extend(self):
+        self.add_segment(self.segment[-1].position())
     
     def move(self):
         for seg in range(len(self.segment)-1,0,-1):
