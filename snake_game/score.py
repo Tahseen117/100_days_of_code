@@ -41,7 +41,7 @@ class Score(Turtle):
                 f.write(f"Highest scorer : {user_name} : {self.score}")
     
     def performer(self):
-        with open ('highest_score.txt', 'r') as f:
+        with open ('highest_score.txt', 'w+') as f:
             perf = f.read()
             self.goto(200,280)
         self.write(perf, font=('Arial', 10, 'normal'), align=CENTER)
